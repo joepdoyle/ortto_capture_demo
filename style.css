@@ -6,17 +6,10 @@
 }
 
 /* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
+* {
   margin: 0;
+  padding: 0;
+  font: inherit;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -30,9 +23,14 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 /* Set core body defaults */
 body {
-  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -44,23 +42,16 @@ a:not([class]) {
 
 /* Make images easier to work with */
 img,
-picture {
+picture,
+svg {
   max-width: 100%;
   display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
   
   *,
@@ -73,15 +64,113 @@ select {
   }
 }
 
-body {
-    height: 100vh;
-    background-color: #222222;
-    color: white;
+/* Navigation */
+
+.primary-navigation {
+  width: 100vw;
+  box-shadow: 0 0 10px #e1e5ee;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 2rem;
 }
+
+.nav-logo {
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.nav-list-item {
+  font-weight: bold;
+  position: relative;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+}
+
+.nav-list-item::after {
+  content: "";
+  width: 0;
+  height: 0.3rem;
+  border-radius: 0.2rem;
+  position: absolute;
+  left: 1rem;
+  bottom: 0.8rem;
+  background-color: rgb(64, 99, 246);
+  transition: width 200ms ease-in;
+}
+
+.nav-list-item:hover::after,
+.nav-list-item:focus::after {
+  width: 80%;
+}
+
+.nav-list-item:hover ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-list-drop {
+  position: absolute;
+  top: 4.5rem;
+  left: -4rem;
+  box-shadow: 0 0 10px #fce4ec;
+  background-color: white;
+  border-radius: 0.2rem;
+  width: 12rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out;
+}
+
+li {
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  transition: background-color 200ms ease-in-out;
+}
+
+.nav-list-drop li:hover {
+  background-color: rgb(226, 234, 255);
+}
+
+li a {
+  text-decoration: none;
+  color: #222222;
+}
+
+a {
+  display: block;
+}
+
+.active {
+  background-color: rgb(226, 234, 255);
+}
+
+/* Main */
+
+main {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
